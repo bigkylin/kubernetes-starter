@@ -80,6 +80,13 @@ net.ipv4.ip_forward = 1
 net.bridge.bridge-nf-call-ip6tables = 1
 net.bridge.bridge-nf-call-iptables = 1
 EOF
+
+#上面命令报错时，试试下面的
+sudo tee /etc/sysctl.d/k8s.conf <<-'EOF'
+net.ipv4.ip_forward = 1
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+EOF
  
 #生效配置文件
 $ sysctl -p /etc/sysctl.d/k8s.conf
